@@ -33,7 +33,7 @@
                     <img class="space-background"
                         src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1193&q=80"
                         alt="Space">
-                    <img onclick="addCheese()" class="moon-img"
+                    <img onclick="clickCheese()" class="moon-img"
                         src="https://www.freeiconspng.com/thumbs/moon-png/moon-png-no-background-15.png" alt="Moon">
                 </div>
             </div>
@@ -48,10 +48,10 @@
                 <div class="purchasing-block">
                     <h2 class="custom-fw-bold">UPGRADE YOUR GEAR!</h2>
                     <div>
-                        <button>Add Spoon</button>
-                        <button>Add Shovel Spoon</button>
-                        <button>Add Spoon Drill</button>
-                        <button>Add Spoon Excavator</button>
+                        <button onclick="purchaseUpgrade('Spoon')">Add Spoon</button>
+                        <button onclick="purchaseUpgrade('Shovel Spoon')">Add Shovel Spoon</button>
+                        <button onclick="purchaseUpgrade('Spoon Drill')">Add Spoon Drill</button>
+                        <button onclick="purchaseUpgrade('Spoon Excavator')">Add Spoon Excavator</button>
                     </div>
                 </div>
             </div>
@@ -76,13 +76,13 @@
                 <section class="row inventory-block">
                     <div class="col-6">
                         <h2>Click Upgrades</h2>
-                        <h2>Spoons - 5</h2>
-                        <h2>Shovel Spoons - 10</h2>
+                        <h2>Spoons - <span id="spoonTotal">5</span></h2>
+                        <h2>Shovel Spoons - <span id="spoonShovelTotal">5</span></h2>
                     </div>
                     <div class="col-6">
                         <h2>Automatic Scoop Upgrades</h2>
-                        <h2>Spoon Drills - 5</h2>
-                        <h2>Spoon Excavator - 10</h2>
+                        <h2>Spoon Drills - <span id="spoonDrillTotal">5</span></h2>
+                        <h2>Spoon Excavator - <span id="spoonExcavatorTotal">5</span></h2>
                     </div>
                 </section>
             </div>
