@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Moon Miner</title>
+</head>
+
+<body>
+
+    <!-- #region Header/Game Title Section -->
+    <header class="container-fluid">
+        <section class="row">
+            <div class="col-12 p-0">
+                <div class="game-title">
+                    <h1>MOON MINER</h1>
+                </div>
+            </div>
+        </section>
+    </header>
+    <!-- #endregion -->
+
+    <main class="container-fluid">
+        <!-- #region Gathering Area  -->
+        <section class="row">
+            <div class="col-12">
+                <div class="gathering-area">
+                    <img class="space-background"
+                        src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1193&q=80"
+                        alt="Space">
+                    <img onclick="addCheese()" class="moon-img"
+                        src="https://www.freeiconspng.com/thumbs/moon-png/moon-png-no-background-15.png" alt="Moon">
+                </div>
+            </div>
+        </section>
+        <!-- #endregion -->
+
+
+        <!-- #region Player Information -->
+        <section class="row player-info">
+            <!-- #region Purchasing Area -->
+            <div class="col-5">
+                <div class="purchasing-block">
+                    <h2 class="custom-fw-bold">UPGRADE YOUR GEAR!</h2>
+                    <div>
+                        <button>Add Spoon</button>
+                        <button>Add Shovel Spoon</button>
+                        <button>Add Spoon Drill</button>
+                        <button>Add Spoon Excavator</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #endregion -->
+
+            <!-- #region current currency info -->
+            <div class="col-2 p-0">
+                <div class="currency-block">
+                    <h2>Total</h2>
+                    <h3 id="currentCheeseTotal">500</h3>
+                    <h2>Scoop Power</h2>
+                    <h3 id="currentClickPower">+25</h3>
+                    <h2>Auto Scoop</h2>
+                    <h3 id="currentAutoPower">+10</h3>
+                </div>
+            </div>
+            <!-- #endregion -->
+
+            <!-- #region player inventory -->
+            <div class="col-5">
+                <section class="row inventory-block">
+                    <div class="col-6">
+                        <h2>Click Upgrades</h2>
+                        <h2>Spoons - 5</h2>
+                        <h2>Shovel Spoons - 10</h2>
+                    </div>
+                    <div class="col-6">
+                        <h2>Automatic Scoop Upgrades</h2>
+                        <h2>Spoon Drills - 5</h2>
+                        <h2>Spoon Excavator - 10</h2>
+                    </div>
+                </section>
+            </div>
+            <!-- #endregion -->
+
+        </section>
+        <!-- #endregion -->
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
