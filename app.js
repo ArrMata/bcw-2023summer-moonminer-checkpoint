@@ -1,7 +1,7 @@
 // #region Global Variables
 
 let playerInfo = {
-    currentCheeseTotal: 0,
+    currentCheeseTotal: 50000,
     clickPower: 1,
     autoPower: 0,
 }
@@ -35,6 +35,8 @@ let autoUpgrades = [
         multiplier: 10
     }
 ]
+
+let currentRotation = 0
 
 // #endregion
 
@@ -112,14 +114,14 @@ function drawPurchaseBlock() {
     const purchaseBlockElem = document.getElementById('purchaseBlock')
     let stringToAdd = `<div class="d-flex me-2 flex-column">`
     clickUpgrades.forEach(upgrade => {
-        stringToAdd += `<button onclick="purchaseUpgrade('${upgrade.name}')">🛒 ${upgrade.name} ${upgrade.price}</button>`
+        stringToAdd += formatPurchaseButton(upgrade)
     })
     stringToAdd += `
     </div>
     <div class="d-flex ms-2 flex-column">
     `
     autoUpgrades.forEach(upgrade => {
-        stringToAdd += `<button onclick="purchaseUpgrade('${upgrade.name}')">🛒 ${upgrade.name} ${upgrade.price}</button>`
+        stringToAdd += formatPurchaseButton(upgrade)
     })
     stringToAdd += `</div>`
     purchaseBlockElem.innerHTML = stringToAdd
@@ -128,6 +130,15 @@ function drawPurchaseBlock() {
 function clearPurchaseBlock() {
     const purchaseBlockElem = document.getElementById('purchaseBlock')
     purchaseBlockElem.innerHTML = ''
+}
+
+function rotateMoon() {
+    currentRotation += 10
+    document.querySelector('.moon-img').style.setProperty('transform', `rotate(${currentRotation}deg)`)
+}
+
+function scrollBackground() {
+
 }
 
 // #endregion
@@ -142,9 +153,23 @@ function findUpgrade(name) {
     }
     return foundUpgrade
 }
+
+function formatPurchaseButton(upgrade) {
+    let priceAsString = String(upgrade.price)
+    if (upgrade.price >= 1000) {
+        priceAsString = `${(upgrade.price / 1000).toFixed(1)}K`
+    }
+    return `<div class="purchase-btn">
+    <button class="custom-fw-semibold" onclick="purchaseUpgrade('${upgrade.name}')">🛒 ${priceAsString}</button> 
+    <span class="custom-fw-semibold">${upgrade.name}</span>
+    </div>
+    `
+}
+
 //#endregion
 
 //#region Function Calls / Game Start
 drawScreen()
 setInterval(autoAddCheese, 3000)
+setInterval(rotateMoon, 150)
 //#endregion
