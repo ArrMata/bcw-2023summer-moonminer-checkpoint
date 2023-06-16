@@ -57,7 +57,7 @@
             <!-- #endregion -->
 
             <!-- #region current currency info -->
-            <div class="col-2 p-0">
+            <div class="d-flex flex-column justify-content-center col-2 p-0">
                 <div class="currency-block">
                     <h2>Total</h2>
                     <h3 id="currentCheeseTotal">500</h3>
@@ -72,15 +72,32 @@
             <!-- #region player inventory -->
             <div class="col-5">
                 <section class="row inventory-block">
-                    <div class="col-6">
-                        <h2>Click Upgrades</h2>
-                        <h2>Spoons - <span id="spoonTotal">5</span></h2>
-                        <h2>Shovel Spoons - <span id="spoonShovelTotal">5</span></h2>
+                    <div class="col-12 inventory-block-header">
+                        <h2>CURRENT GEAR</h2>
                     </div>
                     <div class="col-6">
-                        <h2>Automatic Scoop Upgrades</h2>
-                        <h2>Spoon Drills - <span id="spoonDrillTotal">5</span></h2>
-                        <h2>Spoon Excavator - <span id="spoonExcavatorTotal">5</span></h2>
+                        <div id="clickInventory" class="d-flex justify-content-between">
+                            <div>
+                                <h2>Spoons</h2>
+                                <h2>Shovel Spoons </h2>
+                            </div>
+                            <div>
+                                <h2 id="spoonTotal">5</h2>
+                                <h2 id="spoonShovelTotal">5</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="autoInventory" class="d-flex justify-content-between">
+                            <div>
+                                <h2>Spoon Drills</h2>
+                                <h2>Spoon Excavator</h2>
+                            </div>
+                            <div>
+                                <h2 id="spoonDrillTotal">5</h2>
+                                <h2 id="spoonExcavatorTotal">5</h2>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>

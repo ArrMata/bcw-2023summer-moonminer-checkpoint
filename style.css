@@ -64,6 +64,7 @@ body {
     padding: 3vh 0;
     cursor: pointer;
     transition: all 0.5s ease;
+    user-select: none;
 }
 
 .space-background {
@@ -116,19 +117,43 @@ body {
     width: 7vw;
     margin-right: 0.75vw;
     margin-bottom: 2vh;
+    transition: background-color 0.25s ease;
+}
+
+.purchase-btn button:hover {
+    background-color: #abc41f;
+}
+
+.purchase-btn-disabled {
+    display: flex;
+    font-size: 1.2rem;
+}
+
+.purchase-btn-disabled button {
+    border: none;
+    cursor: default;
+    background-color: #878787;
+    height: 4vh;
+    width: 7vw;
+    margin-right: 0.75vw;
+    margin-bottom: 2vh;
 }
 
 .currency-block {
     color: white;
+    background-color: #228a8c;
     text-align: center;
+    margin: 0 2vw;
+    padding: 2vh 0;
+    box-shadow: 0 1vh 10px rgba(70, 70, 70, 0.801);
 }
 
 .currency-block h2 {
-    font-size: 1.5rem
+    font-size: 1.25rem
 }
 
 .currency-block h3 {
-    font-size: 2rem
+    font-size: 1.75rem
 }
 
 .inventory-block {
@@ -143,6 +168,20 @@ body {
 
 .inventory-block h2 {
     font-size: 1.5rem;
+}
+
+.inventory-block-header {
+    height: 0%;
+    display: flex;
+    justify-content: center;
+}
+
+.inventory-block-header h2 {
+    margin-bottom: 2vh;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #CFED22;
+    text-shadow: 0vw 0.15vh 15px rgb(227, 227, 227);
 }
 
 /* #region Utility Classes */

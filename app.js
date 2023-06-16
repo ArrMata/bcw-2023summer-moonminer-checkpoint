@@ -36,7 +36,8 @@ let autoUpgrades = [
     }
 ]
 
-let currentRotation = 0
+let moonRotation = 0
+let spaceRotation = 0
 
 // #endregion
 
@@ -132,15 +133,31 @@ function clearPurchaseBlock() {
     purchaseBlockElem.innerHTML = ''
 }
 
+// function drawInventoryBlock() {
+//     clearInventoryBlock()
+//     clickNameStrings = `<div>`
+//     autoString = `<div>`
+
+//     clickUpgrades.forEach(upgrade => {
+//         clickString += `<h2>${upgrade.name}</h2>`
+//     })
+//     clickString += `</div>`
+
+//     autoUpgrades.forEach(upgrade => {
+//         autoString += `<h2>${upgrade.quantity}</h2>`
+//     })
+
+// }
+
+// function clearInventoryBlock() {
+//     document.getElementById('clickInventory').innerHTML = ""
+//     document.getElementById('autoInventory').innerHTML = ""
+// }
+
 function rotateMoon() {
-    currentRotation += 10
-    document.querySelector('.moon-img').style.setProperty('transform', `rotate(${currentRotation}deg)`)
+    moonRotation += 10
+    document.querySelector('.moon-img').style.setProperty('transform', `rotate(${moonRotation}deg)`)
 }
-
-function scrollBackground() {
-
-}
-
 // #endregion
 
 // #region Utility functions
@@ -156,10 +173,16 @@ function findUpgrade(name) {
 
 function formatPurchaseButton(upgrade) {
     let priceAsString = String(upgrade.price)
+    let buttonType = "purchase-btn"
     if (upgrade.price >= 1000) {
         priceAsString = `${(upgrade.price / 1000).toFixed(1)}K`
     }
-    return `<div class="purchase-btn">
+
+    if (playerInfo.currentCheeseTotal < upgrade.price) {
+        buttonType += "-disabled"
+    }
+
+    return `<div class="${buttonType}">
     <button class="custom-fw-semibold" onclick="purchaseUpgrade('${upgrade.name}')">🛒 ${priceAsString}</button> 
     <span class="custom-fw-semibold">${upgrade.name}</span>
     </div>
