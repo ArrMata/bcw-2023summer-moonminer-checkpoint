@@ -1,7 +1,7 @@
 // #region Global Variables
 
 let playerInfo = {
-    currentCheeseTotal: 20000,
+    currentCheeseTotal: 0,
     clickPower: 1,
     autoPower: 0,
 }
@@ -9,13 +9,13 @@ let playerInfo = {
 let clickUpgrades = [
     {
         name: 'Spoon',
-        price: 100,
+        price: 10,
         quantity: 0,
         multiplier: 1
     },
     {
         name: 'Shovel Spoon',
-        price: 250,
+        price: 50,
         quantity: 0,
         multiplier: 5
     }
@@ -24,13 +24,13 @@ let clickUpgrades = [
 let autoUpgrades = [
     {
         name: 'Spoon Drill',
-        price: 300,
+        price: 200,
         quantity: 0,
         multiplier: 3
     },
     {
         name: 'Spoon Excavator',
-        price: 300,
+        price: 400,
         quantity: 0,
         multiplier: 10
     }
@@ -55,7 +55,7 @@ function purchaseUpgrade(name) {
     if (playerInfo.currentCheeseTotal >= upgrade.price) {
         playerInfo.currentCheeseTotal -= upgrade.price
         upgrade.quantity += 1
-        upgrade.price += Math.floor(.15 * upgrade.price)
+        upgrade.price += Math.ceil(.20 * upgrade.price)
     }
     updatePlayerStats()
     drawScreen()
@@ -82,6 +82,7 @@ function updatePlayerStats() {
 // #region Drawing Functions 
 
 function drawScreen() {
+    drawPurchaseBlock()
     drawPlayerStats()
     drawPlayerInventory()
 }
@@ -104,6 +105,29 @@ function drawPlayerInventory() {
     spoonShovelElem.innerText = findUpgrade('Shovel Spoon').quantity
     spoonDrillElem.innerText = findUpgrade('Spoon Drill').quantity
     spoonExcavatorElem.innerText = findUpgrade('Spoon Excavator').quantity
+}
+
+function drawPurchaseBlock() {
+    clearPurchaseBlock()
+    const purchaseBlockElem = document.getElementById('purchaseBlock')
+    let stringToAdd = `<div class="d-flex me-2 flex-column">`
+    clickUpgrades.forEach(upgrade => {
+        stringToAdd += `<button onclick="purchaseUpgrade('${upgrade.name}')">🛒 ${upgrade.name} ${upgrade.price}</button>`
+    })
+    stringToAdd += `
+    </div>
+    <div class="d-flex ms-2 flex-column">
+    `
+    autoUpgrades.forEach(upgrade => {
+        stringToAdd += `<button onclick="purchaseUpgrade('${upgrade.name}')">🛒 ${upgrade.name} ${upgrade.price}</button>`
+    })
+    stringToAdd += `</div>`
+    purchaseBlockElem.innerHTML = stringToAdd
+}
+
+function clearPurchaseBlock() {
+    const purchaseBlockElem = document.getElementById('purchaseBlock')
+    purchaseBlockElem.innerHTML = ''
 }
 
 // #endregion

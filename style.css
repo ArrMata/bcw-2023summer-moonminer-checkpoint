@@ -16,6 +16,8 @@ body {
     background-color: #0F3347
 }
 
+.purchase-btn {}
+
 .game-title {
     padding: 0.25vh 0;
     display: flex;
@@ -73,6 +75,13 @@ body {
     background-color: #19686a;
     border-radius: 1.5vw;
     box-shadow: inset 0 0 10px rgba(58, 58, 58, 0.64);
+}
+
+.purchasing-block h2 {
+    margin-bottom: 2vh;
+    font-weight: 600;
+    color: #CFED22;
+    text-shadow: 0vw 0.15vh 15px rgb(227, 227, 227);
 }
 
 .currency-block {
