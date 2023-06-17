@@ -151,7 +151,7 @@ body {
     background-color: #228a8c;
     text-align: center;
     margin: 0 2vw;
-    padding: 2vh 0;
+    padding: 2vh 1.75vw;
     box-shadow: 0 1vh 10px rgba(70, 70, 70, 0.801);
 }
 
@@ -162,6 +162,43 @@ body {
 .currency-block h3 {
     font-size: 1.75rem
 }
+
+/* .boost-btn {
+    width: 12vw;
+}
+
+.boost-btn button {
+    border-radius: 1vw;
+    border: none;
+    background-color: #CFED22;
+    height: 4vh;
+    width: 100%;
+    margin-right: 0.75vw;
+    margin-bottom: 2vh;
+    font-size: 1.65rem;
+    font-weight: 600;
+    transition: background-color 0.25s ease;
+}
+
+.boost-btn-disabled button {
+    border: none;
+    cursor: default;
+    background-color: #878787;
+    height: 4vh;
+    width: 100%;
+    margin-right: 0.75vw;
+    margin-bottom: 2vh;
+    font-size: 1.65rem;
+    font-weight: 600;
+}
+
+#boost-span {
+    font-weight: 600;
+}
+
+.boost-btn button:hover {
+    background-color: #abc41f;
+} */
 
 /* #endregion */
 

@@ -48,6 +48,10 @@ let autoUpgrades = [
     }
 ]
 
+let boostInfo = {
+    price: 5000,
+}
+
 let moonRotation = 0
 let spaceRotation = 0
 
@@ -92,11 +96,16 @@ function updatePlayerStats() {
     playerInfo.autoPower = totalAutoMods
 }
 
+function boostGame() {
+
+}
+
 // #endregion
 
 // #region Drawing Functions 
 
 function drawScreen() {
+    // drawBoost()
     drawPurchaseBlock()
     drawPlayerStats()
     drawInventoryBlock()
@@ -143,6 +152,11 @@ function drawPurchaseBlock() {
 function clearPurchaseBlock() {
     const purchaseBlockElem = document.getElementById('purchaseBlock')
     purchaseBlockElem.innerHTML = ''
+}
+
+function drawBoost() {
+    const boostElem = document.getElementById('boost-span')
+    boostElem.innerText = boostInfo.price
 }
 
 function drawInventoryBlock() {
