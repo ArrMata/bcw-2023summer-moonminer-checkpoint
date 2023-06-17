@@ -1,7 +1,7 @@
 // #region Global Variables
 
 let playerInfo = {
-    currentCheeseTotal: 50000,
+    currentCheeseTotal: 0,
     clickPower: 1,
     autoPower: 0,
 }
@@ -18,6 +18,12 @@ let clickUpgrades = [
         price: 50,
         quantity: 0,
         multiplier: 5
+    },
+    {
+        name: 'Spoon Jackhammer',
+        price: 200,
+        quantity: 0,
+        multiplier: 20
     }
 ]
 
@@ -33,6 +39,12 @@ let autoUpgrades = [
         price: 400,
         quantity: 0,
         multiplier: 10
+    },
+    {
+        name: 'Spoon Laser',
+        price: 1000,
+        quantity: 0,
+        multiplier: 150
     }
 ]
 
@@ -87,7 +99,7 @@ function updatePlayerStats() {
 function drawScreen() {
     drawPurchaseBlock()
     drawPlayerStats()
-    drawPlayerInventory()
+    drawInventoryBlock()
 }
 
 function drawPlayerStats() {
@@ -133,26 +145,36 @@ function clearPurchaseBlock() {
     purchaseBlockElem.innerHTML = ''
 }
 
-// function drawInventoryBlock() {
-//     clearInventoryBlock()
-//     clickNameStrings = `<div>`
-//     autoString = `<div>`
+function drawInventoryBlock() {
+    clearInventoryBlock()
+    clickNameStrings = `<div>`
+    clickQuantityStrings = `<div>`
+    autoNameStrings = `<div>`
+    autoQuantityStrings = `<div>`
 
-//     clickUpgrades.forEach(upgrade => {
-//         clickString += `<h2>${upgrade.name}</h2>`
-//     })
-//     clickString += `</div>`
+    clickUpgrades.forEach(upgrade => {
+        clickNameStrings += `<h2>${upgrade.name}</h2>`
+        clickQuantityStrings += `<h2>${upgrade.quantity}</h2>`
+    })
+    clickNameStrings += `</div>`
+    clickQuantityStrings += `</div>`
 
-//     autoUpgrades.forEach(upgrade => {
-//         autoString += `<h2>${upgrade.quantity}</h2>`
-//     })
+    autoUpgrades.forEach(upgrade => {
+        autoNameStrings += `<h2>${upgrade.name}</h2>`
+        autoQuantityStrings += `<h2>${upgrade.quantity}</h2>`
+    })
+    autoNameStrings += `</div>`
+    autoQuantityStrings += `</div>`
 
-// }
+    document.getElementById('clickInventory').innerHTML = clickNameStrings + clickQuantityStrings
+    document.getElementById('autoInventory').innerHTML = autoNameStrings + autoQuantityStrings
 
-// function clearInventoryBlock() {
-//     document.getElementById('clickInventory').innerHTML = ""
-//     document.getElementById('autoInventory').innerHTML = ""
-// }
+}
+
+function clearInventoryBlock() {
+    document.getElementById('clickInventory').innerHTML = ""
+    document.getElementById('autoInventory').innerHTML = ""
+}
 
 function rotateMoon() {
     moonRotation += 10
