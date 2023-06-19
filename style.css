@@ -163,32 +163,33 @@ body {
     font-size: 1.75rem
 }
 
-/* .boost-btn {
+.boost-btn {
     width: 12vw;
 }
 
-.boost-btn button {
+.boost-btn {
     border-radius: 1vw;
     border: none;
     background-color: #CFED22;
     height: 4vh;
     width: 100%;
-    margin-right: 0.75vw;
     margin-bottom: 2vh;
-    font-size: 1.65rem;
+    padding: 0vh 1vw;
+    font-size: 1.45rem;
     font-weight: 600;
     transition: background-color 0.25s ease;
 }
 
-.boost-btn-disabled button {
+.boost-btn-disabled {
+    border-radius: 1vw;
     border: none;
     cursor: default;
     background-color: #878787;
     height: 4vh;
     width: 100%;
-    margin-right: 0.75vw;
     margin-bottom: 2vh;
-    font-size: 1.65rem;
+    padding: 0vh 1vw;
+    font-size: 1.45rem;
     font-weight: 600;
 }
 
@@ -196,9 +197,9 @@ body {
     font-weight: 600;
 }
 
-.boost-btn button:hover {
+.boost-btn:hover {
     background-color: #abc41f;
-} */
+}
 
 /* #endregion */
 

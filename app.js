@@ -1,7 +1,7 @@
 // #region Global Variables
 
 let playerInfo = {
-    currentCheeseTotal: 0,
+    currentCheeseTotal: 4995,
     clickPower: 1,
     autoPower: 0,
 }
@@ -50,10 +50,12 @@ let autoUpgrades = [
 
 let boostInfo = {
     price: 5000,
+
 }
 
 let moonRotation = 0
 let spaceRotation = 0
+let boostActive = false
 
 // #endregion
 
@@ -97,7 +99,28 @@ function updatePlayerStats() {
 }
 
 function boostGame() {
+    if (playerInfo.currentCheeseTotal >= boostInfo.price) {
+        playerInfo.currentCheeseTotal -= boostInfo.price
+        boostInfo.price += Math.ceil(.5 * boostInfo.price)
+    }
+    clearInterval(standardAddInterval)
+    clearInterval(standardMoonInterval)
+    let boostedAddInterval = setInterval(autoAddCheese, 1000)
+    let boostedMoonInterval = setInterval(rotateMoon, 10)
+    document.querySelector('.moon-container').style.setProperty('filter', 'invert()')
+    boostActive = true
+    drawScreen()
+    setTimeout(stopBoost, 10000, boostedAddInterval, boostedMoonInterval)
+}
 
+function stopBoost(boostedCheese, boostedMoon) {
+    document.querySelector('.moon-container').style.setProperty('filter', '')
+    clearInterval(boostedCheese)
+    clearInterval(boostedMoon)
+    standardAddInterval = setInterval(autoAddCheese, 3000)
+    standardMoonInterval = setInterval(rotateMoon, 150)
+    boostActive = false
+    drawScreen()
 }
 
 // #endregion
@@ -105,7 +128,7 @@ function boostGame() {
 // #region Drawing Functions 
 
 function drawScreen() {
-    // drawBoost()
+    drawBoost()
     drawPurchaseBlock()
     drawPlayerStats()
     drawInventoryBlock()
@@ -155,8 +178,26 @@ function clearPurchaseBlock() {
 }
 
 function drawBoost() {
-    const boostElem = document.getElementById('boost-span')
-    boostElem.innerText = boostInfo.price
+    clearBoost()
+    const boostDiv = document.getElementById('boost-div')
+
+    if (playerInfo.currentCheeseTotal < boostInfo.price || boostActive) {
+        boostDiv.innerHTML = `
+        <button class="boost-btn-disabled">Boost <span id="boost-span"></span> 🔥</button>
+        `
+    }
+    else {
+        boostDiv.innerHTML = `
+        <button onclick='boostGame()' class="boost-btn">Boost <span id="boost-span"></span> 🔥</button>
+        `
+    }
+    const boostSpan = document.getElementById('boost-span')
+    boostSpan.innerText = boostInfo.price
+}
+
+function clearBoost() {
+    const boostDiv = document.getElementById('boost-div')
+    boostDiv.innerHTML = ''
 }
 
 function drawInventoryBlock() {
@@ -229,6 +270,6 @@ function formatPurchaseButton(upgrade) {
 
 //#region Function Calls / Game Start
 drawScreen()
-setInterval(autoAddCheese, 3000)
-setInterval(rotateMoon, 150)
+let standardAddInterval = setInterval(autoAddCheese, 3000)
+let standardMoonInterval = setInterval(rotateMoon, 150)
 //#endregion
