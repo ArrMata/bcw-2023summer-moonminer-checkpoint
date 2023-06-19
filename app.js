@@ -1,7 +1,7 @@
 // #region Global Variables
 
 let playerInfo = {
-    currentCheeseTotal: 4995,
+    currentCheeseTotal: 0,
     clickPower: 1,
     autoPower: 0,
 }
@@ -49,8 +49,7 @@ let autoUpgrades = [
 ]
 
 let boostInfo = {
-    price: 5000,
-
+    price: 2000,
 }
 
 let moonRotation = 0
@@ -110,7 +109,7 @@ function boostGame() {
     document.querySelector('.moon-container').style.setProperty('filter', 'invert()')
     boostActive = true
     drawScreen()
-    setTimeout(stopBoost, 10000, boostedAddInterval, boostedMoonInterval)
+    setTimeout(stopBoost, 20000, boostedAddInterval, boostedMoonInterval)
 }
 
 function stopBoost(boostedCheese, boostedMoon) {
